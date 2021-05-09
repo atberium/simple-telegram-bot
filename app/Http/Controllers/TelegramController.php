@@ -24,7 +24,7 @@ class TelegramController extends Controller
                 'text' => 'foo',
             ];
             $uri = config('app.telegram_bot_endpoint') . '/sendMessage';
-            Http::asJson()->async()->post($uri, $answer);
+            Http::asJson()->post($uri, $answer);
         } catch (JsonException $e) {
             Log::error($e->getMessage(), [
                 'message' => $json,
