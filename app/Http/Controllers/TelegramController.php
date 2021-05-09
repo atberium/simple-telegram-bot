@@ -17,22 +17,14 @@ class TelegramController extends Controller
     public function handleRequest(Request $request): Response
     {
         $json = $request->getContent();
-        Log::debug('Incoming', [
-            'message' => $json,
-        ]);
         try {
             $message = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
             $answer = [
                 'chat_id' => $message['message']['chat']['id'],
-                'text' => 'foo'
+                'text' => 'foo',
             ];
             $uri = config('app.telegram_bot_endpoint') . '/sendMessage';
-            Log::debug('Outgoing', [
-                'uri' => $uri,
-                'answer' => $answer,
-                'source' => $message,
-            ]);
-           Http::asJson()->post($uri, $answer);
+            Http::asJson()->async()->post($uri, $answer);
         } catch (JsonException $e) {
             Log::error($e->getMessage(), [
                 'message' => $json,
