@@ -32,9 +32,7 @@ class TelegramController extends Controller
                 'answer' => $answer,
                 'source' => $message,
             ]);
-           Http::async()
-               ->withBody(json_encode($answer, JSON_THROW_ON_ERROR), 'application/json')
-               ->post($uri);
+           Http::asJson()->post($uri, $answer);
         } catch (JsonException $e) {
             Log::error($e->getMessage(), [
                 'message' => $json,
