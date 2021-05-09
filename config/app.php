@@ -123,7 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'telegram.bot.endpoint' => 'https://api.telegram.org/bot' . env('TELEGRAM_BOT', ''),
+    'telegram_bot_endpoint' => 'https://api.telegram.org/bot' . env('TELEGRAM_BOT', ''),
 
     /*
     |--------------------------------------------------------------------------

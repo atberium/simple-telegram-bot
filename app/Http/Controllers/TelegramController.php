@@ -26,7 +26,7 @@ class TelegramController extends Controller
                 'chat_id' => $message['message']['chat']['id'],
                 'text' => 'foo'
             ];
-            $uri = config('telegram.bot.endpoint') . '/sendMessage';
+            $uri = config('app.telegram_bot_endpoint') . '/sendMessage';
             Log::debug('Outgoing', [
                 'uri' => $uri,
             ]);
