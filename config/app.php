@@ -125,6 +125,9 @@ return [
 
     'telegram_bot_endpoint' => 'https://api.telegram.org/bot' . env('TELEGRAM_BOT', ''),
 
+    'value_min' => 1,
+    'value_max' => 1000,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -209,7 +212,6 @@ return [
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
-        // 'Redis' => Illuminate\Support\Facades\Redis::class,
         'Request' => Illuminate\Support\Facades\Request::class,
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,
