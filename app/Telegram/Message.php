@@ -3,9 +3,11 @@
 namespace App\Telegram;
 
 use App\Exceptions\MalformedTelegramMessageException;
-use Illuminate\Http\Request;
 use JsonException;
 
+/**
+ * User message received from Telegram according to its API {@link https://core.telegram.org/bots/api}
+ */
 class Message
 {
     private int $chatId;
@@ -22,19 +24,18 @@ class Message
      * @throws MalformedTelegramMessageException
      * @throws JsonException
      */
-    public static function createFromHttpRequest(Request $request): self
+    public static function createString(string $content): self
     {
-        $json = $request->getContent();
-        $message = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        $message = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         if (!isset($message['message']['chat']['id'])) {
-            throw new MalformedTelegramMessageException($json, null);
+            throw new MalformedTelegramMessageException($content, null);
         }
 
         $chatId = $message['message']['chat']['id'];
 
         if (!isset($message['message']['text'])) {
-            throw new MalformedTelegramMessageException($json, $chatId);
+            throw new MalformedTelegramMessageException($content, $chatId);
         }
 
         $chatId = $message['message']['chat']['id'];

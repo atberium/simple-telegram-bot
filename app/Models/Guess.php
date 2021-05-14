@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int right
  * @property int value
  * @property int chat_id
+ * @property int id
  * @property boolean guessed
  */
 class Guess extends Model

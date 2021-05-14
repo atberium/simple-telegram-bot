@@ -2,12 +2,15 @@
 
 namespace App\Telegram;
 
+/**
+ * Parser of user message received from Telegram. Gets first word and tries to determine, what user wanted to say
+ */
 class AnswerParser
 {
     private const TOKENS_MAP = [
-        Answer::LESS => 'yes|да',
-        Answer::GREATER => 'no|нет',
-        Answer::GUESS_OVER => '\/guess',
+        Answer::LESS => 'yes|да|\+|д+|yep|y',
+        Answer::GREATER => 'no|нет|-|н|not|n',
+        Answer::START => '\/start',
         Answer::HELP => '\/help',
     ];
 

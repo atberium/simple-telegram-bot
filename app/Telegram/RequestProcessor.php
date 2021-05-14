@@ -20,7 +20,7 @@ class RequestProcessor
     public function process(Request $request): void
     {
         try {
-            $message = Message::createFromHttpRequest($request);
+            $message = Message::createString((string)$request->getContent());
             $this->messageProcessor->process($message);
         } catch (JsonException | MalformedTelegramMessageException $e) {
             Log::error($e, [
