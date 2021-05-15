@@ -5,7 +5,7 @@ namespace App\Telegram;
 use App\Models\Guess;
 
 /**
- * Determine guessed number, using binary search algorithm
+ * Determines guessed number, using binary search algorithm
  * (@link https://leetcode.com/explore/learn/card/binary-search/135/template-iii/936/}
  */
 class Guesser

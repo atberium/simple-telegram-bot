@@ -8,19 +8,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use JsonException;
 
+/**
+ * Process webhook request from telegram.
+ * Retrieves user message information from received request and process it via message processor
+ */
 class RequestProcessor
 {
     private MessageProcessorInterface $messageProcessor;
 
-    public function __construct(MessageProcessorInterface $messageProcessor)
+    private MessageFactory $messageFactory;
+
+    public function __construct(MessageProcessorInterface $messageProcessor, MessageFactory $messageFactory)
     {
         $this->messageProcessor = $messageProcessor;
+        $this->messageFactory = $messageFactory;
     }
 
     public function process(Request $request): void
     {
         try {
-            $message = Message::createString((string)$request->getContent());
+            $message = $this->messageFactory->createFromJson((string)$request->getContent());
             $this->messageProcessor->process($message);
         } catch (JsonException | MalformedTelegramMessageException $e) {
             Log::error($e, [

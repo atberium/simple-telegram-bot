@@ -14,7 +14,7 @@ class AnswerParser
         Answer::HELP => '\/help',
     ];
 
-    public static function parse(string $message): Answer
+    public function parse(string $message): Answer
     {
         $trimmed = ltrim($message);
 

@@ -7,6 +7,9 @@ use App\Telegram\Guesser;
 use App\Telegram\Message;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Processor that guesses which number the user guessed
+ */
 class GuesserMessageProcessor implements MessageProcessorInterface
 {
     private Guesser $guesser;

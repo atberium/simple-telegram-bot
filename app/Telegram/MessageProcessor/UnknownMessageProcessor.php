@@ -5,6 +5,9 @@ namespace App\Telegram\MessageProcessor;
 use App\Telegram\Client;
 use App\Telegram\Message;
 
+/**
+ * Final message processor, when we couldn't recognize, what user wanted to say
+ */
 class UnknownMessageProcessor implements MessageProcessorInterface
 {
     private Client $client;

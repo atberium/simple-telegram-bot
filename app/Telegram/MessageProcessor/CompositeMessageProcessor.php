@@ -3,6 +3,10 @@
 namespace App\Telegram\MessageProcessor;
 use App\Telegram\Message;
 
+/**
+ * Composition of processors {@link \App\Telegram\MessageProcessor\MessageProcessorInterface}
+ * Delegates message processing to each processors. Stops delegating, when one of the processors succeeded
+ */
 class CompositeMessageProcessor implements MessageProcessorInterface
 {
     /**

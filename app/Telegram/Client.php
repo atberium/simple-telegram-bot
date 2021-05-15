@@ -4,6 +4,9 @@ namespace App\Telegram;
 
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Sends requests to the Telegram Bot API
+ */
 class Client
 {
     private string $endpoint;
